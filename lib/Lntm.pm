@@ -1,5 +1,6 @@
 package Lntm;
 use 5.14.2;
+no warnings 'uninitialized';
 use Date::Parse;
 
 sub import {
