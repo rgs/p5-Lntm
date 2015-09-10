@@ -11,8 +11,10 @@ sub import {
 sub linetime (_) {
     my ($line) = @_;
     $line =~ m!\b(20[0-9][0-9][-/][01][0-9][-/][0123][0-9]\s+[012][0-9]:[0-5][0-9]:[0-5][0-9])!
-        or return 0;
-    return str2time($1);
+        and return str2time($1);
+    $line =~ m!\b(20[0-9][0-9][-/][01][0-9][-/][0123][0-9])!
+        and return str2time("$1 00:00:00");
+    return 0;
 }
 
 1;

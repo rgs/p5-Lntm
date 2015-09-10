@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 9;
 
 BEGIN { use_ok 'Lntm' }
 
@@ -13,3 +13,5 @@ is(linetime, 0, 'no $_');
 $_ = "\n2014/01/01  01:02:05\n";
 is(linetime, 1388534525, 'defaults to $_');
 is(linetime, 1388534526, 'defaults to $_ in for ') for '2014-01-01 01:02:06';
+is(linetime('<2015-05-05 00:00:00>'), 1430776800, 'Midnight hour');
+is(linetime('<2015-05-05>'), 1430776800, 'Implicit hour');
